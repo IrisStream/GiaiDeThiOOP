@@ -11,6 +11,11 @@ Employee::Employee(string id, string name, Date birthDay, string address, float 
 	this->startDate = startDate;
 }
 
+string Employee::getName()
+{
+	return this->name;
+}
+
 
 void Employee::input()
 {
@@ -57,6 +62,34 @@ int Manager::computeSalary() const
 	return Employee::basicSalary * this->salaryFator;
 }
 
+int Manager::countEmployees()
+{
+	int counter = this->employees.size();
+	for (int i = 0; i < this->employees.size(); i++)
+	{
+		counter += this->employees[i]->countEmployees();
+	}
+	return counter;
+}
+
+void Manager::addEmployee(Employee* employee)
+{
+	this->employees.push_back(employee);
+}
+
+void Manager::removeEmployee(string name)
+{
+	for (int i = 0; i < employees.size(); i++)
+	{
+		if (employees[i]->getName() == name)
+		{
+			delete employees[i];
+			employees[i] = employees[employees.size() - 1];
+			employees.resize(employees.size() - 1);
+		}
+	}
+}
+
 
 void Programmer::input()
 {
@@ -76,6 +109,11 @@ void Programmer::ouput()
 int Programmer::computeSalary() const
 {
 	return Employee::basicSalary*this->salaryFator + this->overtime;
+}
+
+int Programmer::countEmployees()
+{
+	return 0;
 }
 
 void Designer::input()
@@ -98,6 +136,11 @@ int Designer::computeSalary() const
 	return Employee::basicSalary*this->salaryFator + this->bonus;
 }
 
+int Designer::countEmployees()
+{
+	return 0;
+}
+
 
 void Tester::input()
 {
@@ -117,6 +160,11 @@ void Tester::ouput()
 int Tester::computeSalary() const
 {
 	return Employee::basicSalary*this->salaryFator + this->error * Tester::errorFactor;
+}
+
+int Tester::countEmployees()
+{
+	return 0;
 }
 
 void Tester::setErrorFactor(int factor)

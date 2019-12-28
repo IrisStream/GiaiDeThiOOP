@@ -2,6 +2,7 @@
 #define EMPLOYEE_H
 #include <iostream>
 #include <string>
+#include <vector>
 #include "date.h"
 using namespace std;
 
@@ -24,18 +25,25 @@ public:
 		float salaryFactor = 1.0,
 		Date startDate = Date(1, 1, 2019)
 	);
+	string getName();
 	virtual void input();
 	virtual void output() const;
 	virtual int computeSalary() const = 0;
+	virtual int countEmployees() = 0;
 };
 
 class Manager : public Employee
 {
+private:
+	vector<Employee*> employees;
 public:
 	Manager() : Employee() {}
 	virtual void input();
 	virtual void ouput();
-	virtual int computeSalary() const;
+	virtual int computeSalary() const; 
+	virtual int countEmployees();
+	void addEmployee(Employee*);
+	void removeEmployee(string name);
 };
 
 class Programmer : public Employee
@@ -47,6 +55,7 @@ public:
 	virtual void input();
 	virtual void ouput();
 	virtual int computeSalary() const;
+	virtual int countEmployees();
 };
 
 class Designer : public Employee
@@ -58,6 +67,7 @@ public:
 	virtual void input();
 	virtual void ouput();
 	virtual int computeSalary() const;
+	virtual int countEmployees();
 };
 
 class Tester : public Employee
@@ -70,6 +80,7 @@ public:
 	virtual void input();
 	virtual void ouput();
 	virtual int computeSalary() const;
+	virtual int countEmployees();
 	static void setErrorFactor(int);
 };
 

@@ -42,5 +42,11 @@ int main()
 		totalSalary += a[i]->computeSalary();
 	}
 	cout << "Tong luong can tra la: " << totalSalary << endl;
+	cout << "Nhung quan ly co nhieu hon 10 cap duoi la: " << endl;
+	for (int i = 0; i < n; i++)
+	{
+		if (a[i]->countEmployees() > 10)
+			cout << a[i]->getName() << endl;
+	}
 	return 0;
 }
