@@ -1,5 +1,5 @@
 #include "employee.h"
-
+#include <stdio.h>
 
 
 const int Employee::basicSalary = 10000000;
@@ -15,8 +15,9 @@ int main()
 	{
 		cout << "Nhap loai nhan vien: ";
 		string type;
-		cin.ignore();
 		getline(cin, type);
+		if (type.empty())
+			getline(cin, type);
 		if (type == "Manager")
 		{
 			a[i] = new Manager;
@@ -34,6 +35,19 @@ int main()
 			a[i] = new Tester;
 		}
 		a[i]->input();
+		cout << "Nhap ten cap tren truc tiep: ";
+		string name;
+		cin.ignore();
+		getline(cin, name);
+		for (int j = 0; j < i; j++)
+		{
+			if (a[j]->getName() == name)
+			{
+				Manager* manager = dynamic_cast<Manager*>(a[j]);
+				manager->addEmployee(a[i]);
+				break;
+			}
+		}
 		cout << "-------------------------------" << endl;
 	}
 	int totalSalary = 0;
