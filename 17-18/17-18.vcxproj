@@ -138,11 +138,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="bai1.cpp" />
     <ClCompile Include="date.cpp" />
     <ClCompile Include="employee.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="bai1.h" />
     <ClInclude Include="date.h" />
     <ClInclude Include="employee.h" />
   </ItemGroup>
