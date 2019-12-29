@@ -1,0 +1,16 @@
+Câu 1
+	a)
+	construct Shape
+	construct Ellipse
+	ellipse:
+	Ellipse(a=0.333333, b=3)
+	3.14159
+	class Ellipse
+	class Ellipse
+	shape = &ellipse:
+	Ellipse(a=0.333333, b=3)
+	3.14159
+	class Shape
+	class Ellipse
+	destruct Ellipse
+	destruct Shape
